@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Derek Weber. All rights reserved.
 //
 
-#import "ALAAlbum.h"
+#import "ALAPlaylist.h"
 
-@implementation ALAAlbum
+@implementation ALAPlaylist
 
 @end
