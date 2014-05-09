@@ -9,6 +9,9 @@
 #import "ALAAppDelegate.h"
 
 #import "ALAiPadViewController.h"
+#import "ALAiPadTableViewController.h"
+#import "ALAiPhoneTableViewController.h"
+
 
 @implementation ALAAppDelegate
 
