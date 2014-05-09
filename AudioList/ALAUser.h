@@ -10,7 +10,7 @@
 
 @interface ALAUser : NSDictionary
 
-@property (nonatomic) NSArray * albums;
+@property (nonatomic) NSArray * playlists;
 
 
 @end

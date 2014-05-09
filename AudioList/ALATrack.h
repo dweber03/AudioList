@@ -13,8 +13,8 @@
 
 @interface ALATrack : NSDictionary
 
-@property (nonatomic) ALAUser * artist;
-@property (nonatomic) ALAPlaylist * album;
+@property (nonatomic) ALAUser * user;
+@property (nonatomic) ALAPlaylist * playlist;
 
 
 @end
