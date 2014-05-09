@@ -25,6 +25,7 @@
 		668AFB84191D17CA009DED3C /* ALASong.m in Sources */ = {isa = PBXBuildFile; fileRef = 668AFB83191D17CA009DED3C /* ALASong.m */; };
 		668AFB87191D17D8009DED3C /* ALAArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = 668AFB86191D17D8009DED3C /* ALAArtist.m */; };
 		668AFB8A191D17E6009DED3C /* ALAAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 668AFB89191D17E6009DED3C /* ALAAlbum.m */; };
+		668AFB8E191D1D07009DED3C /* ALASoundCloudRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 668AFB8D191D1D07009DED3C /* ALASoundCloudRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,8 @@
 		668AFB86191D17D8009DED3C /* ALAArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAArtist.m; sourceTree = "<group>"; };
 		668AFB88191D17E6009DED3C /* ALAAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALAAlbum.h; sourceTree = "<group>"; };
 		668AFB89191D17E6009DED3C /* ALAAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAAlbum.m; sourceTree = "<group>"; };
+		668AFB8C191D1D07009DED3C /* ALASoundCloudRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALASoundCloudRequest.h; sourceTree = "<group>"; };
+		668AFB8D191D1D07009DED3C /* ALASoundCloudRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALASoundCloudRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 				668AFB86191D17D8009DED3C /* ALAArtist.m */,
 				668AFB88191D17E6009DED3C /* ALAAlbum.h */,
 				668AFB89191D17E6009DED3C /* ALAAlbum.m */,
+				668AFB8C191D1D07009DED3C /* ALASoundCloudRequest.h */,
+				668AFB8D191D1D07009DED3C /* ALASoundCloudRequest.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				668AFB84191D17CA009DED3C /* ALASong.m in Sources */,
 				668AFB3F191BB91F009DED3C /* main.m in Sources */,
 				668AFB81191D14F3009DED3C /* ALAiPadListTableVC.m in Sources */,
+				668AFB8E191D1D07009DED3C /* ALASoundCloudRequest.m in Sources */,
 				668AFB8A191D17E6009DED3C /* ALAAlbum.m in Sources */,
 				668AFB87191D17D8009DED3C /* ALAArtist.m in Sources */,
 				668AFB43191BB91F009DED3C /* ALAAppDelegate.m in Sources */,

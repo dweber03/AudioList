@@ -10,6 +10,8 @@
 
 #import "ALAiPadViewController.h"
 
+#import "ALASoundCloudRequest.h"
+
 @implementation ALAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,6 +20,7 @@
     
     UINavigationController * nc = [[UINavigationController alloc]initWithNibName:nil bundle:nil];
     
+    [ALASoundCloudRequest getSoundCloudData];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
     {
