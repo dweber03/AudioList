@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class ALAUser;
+@class ALAArtist;
 @class ALAPlaylist;
 
 
 @interface ALATrack : NSDictionary
 
-@property (nonatomic) ALAUser * user;
+@property (nonatomic) ALAArtist * user;
 @property (nonatomic) ALAPlaylist * playlist;
 
 

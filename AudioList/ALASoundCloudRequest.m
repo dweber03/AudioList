@@ -12,7 +12,7 @@
 #import "ALASoundCloudRequest.h"
 #import "ALATrack.h"
 #import "ALAPlaylist.h"
-#import "ALAUser.h"
+#import "ALAArtist.h"
 
 @implementation ALASoundCloudRequest
 
@@ -37,7 +37,7 @@
     
     {
         ALAPlaylist * playlist = [[ALAPlaylist alloc] init];
-        ALAUser * user = [[ALAUser alloc]init];
+        ALAArtist * user = [[ALAArtist alloc]init];
         
     
         // playlist name

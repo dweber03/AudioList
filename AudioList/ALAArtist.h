@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ALAUser : NSDictionary
+@interface ALAArtist : NSDictionary
 
 @property (nonatomic) NSArray * playlists;
 

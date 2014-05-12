@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Derek Weber. All rights reserved.
 //
 
-#import "ALAUser.h"
+#import "ALAArtist.h"
 
-@implementation ALAUser
+@implementation ALAArtist
 
 @end
