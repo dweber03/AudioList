@@ -12,7 +12,7 @@
 @class ALAPlaylist;
 
 
-@interface ALATrack : NSDictionary
+@interface ALASong : NSDictionary
 
 @property (nonatomic) ALAArtist * user;
 @property (nonatomic) ALAPlaylist * playlist;

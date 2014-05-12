@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Derek Weber. All rights reserved.
 //
 
-#import "ALATrack.h"
+#import "ALASong.h"
 
-@implementation ALATrack
+@implementation ALASong
 
 @end

@@ -10,7 +10,7 @@
 #define YOUR_USER_NAME @"derekw310"
 
 #import "ALASoundCloudRequest.h"
-#import "ALATrack.h"
+#import "ALASong.h"
 #import "ALAPlaylist.h"
 #import "ALAArtist.h"
 
