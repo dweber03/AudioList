@@ -10,7 +10,10 @@
 
 @interface ALASoundCloudRequest : NSObject
 
-+(NSDictionary *) getSoundCloudData;
++ (void)updateData;
+
+
+//+(NSDictionary *) getSoundCloudData;
 
 
 @end

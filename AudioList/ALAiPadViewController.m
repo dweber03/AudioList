@@ -9,6 +9,8 @@
 #import "ALAiPadViewController.h"
 #import "ALAiPadDetailVC.h"
 #import "ALAiPadListTableVC.h"
+#import "ALASoundCloudRequest.h"
+
 
 @interface ALAiPadViewController () <UISplitViewControllerDelegate>
 
@@ -31,6 +33,11 @@
         
         nc = [[UINavigationController alloc]initWithRootViewController:detailVC];
         
+        
+        // listVC needs a tab bar button at the bottom with 2 options : tracks & playlists buttons: if you click on the playlist, it should push in & display the song list ie..PushView Controller
+        
+        // DetailVC has play & stop button 
+        
         listVC = [[ALAiPadListTableVC alloc]initWithStyle:UITableViewStylePlain];
         
        
@@ -38,10 +45,10 @@
         
         self.viewControllers = @[listVC, nc];
         
-//        self.presentsWithGesture = YES;
+        self.presentsWithGesture = YES;
         self.delegate = self;
         
-        
+        [ALASoundCloudRequest updateData];
     }
     return self;
 }

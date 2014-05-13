@@ -8,6 +8,7 @@
 
 #import "ALAiPadListTableVC.h"
 #import "ALAiPadDetailVC.h"
+#import "ALASongData.h"
 
 @interface ALAiPadListTableVC ()
 
@@ -18,9 +19,26 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        NSNotificationCenter * nCenter = [NSNotificationCenter defaultCenter];
+        
+        
+        [nCenter addObserverForName:@"dataUpdated" object:nil queue:nil usingBlock:^(NSNotification *note) {
+            
+            NSLog(@"Reload TableView");
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+            [self.tableView reloadData];
+                
+            });
+            
+            
+        }];
+        
     }
+    
     return self;
 }
 
@@ -32,7 +50,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//     self.tabBarController. = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,30 +61,36 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 0;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    return [[[ALASongData mainData] allTracks] count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
     
-    // Configure the cell...
+    ALATrack * track = [[ALASongData mainData] allTracks][indexPath.row];
+    
+    cell.textLabel.text = track[@"title"];
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

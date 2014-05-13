@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@class ALAArtist;
+
+#import "ALADictionary.h"
+
+@class ALAUser;
 @class ALAPlaylist;
 
+@interface ALATrack : ALADictionary
 
-@interface ALASong : NSDictionary
++ (id)newTrack;
 
-@property (nonatomic) ALAArtist * user;
-@property (nonatomic) ALAPlaylist * playlist;
+@property(nonatomic) ALAUser * user;
+@property(nonatomic) ALAPlaylist * playlist;
 
 
 @end

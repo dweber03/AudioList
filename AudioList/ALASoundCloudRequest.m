@@ -6,74 +6,66 @@
 //  Copyright (c) 2014 Derek Weber. All rights reserved.
 //
 
-#define CLIENT_ID @"65db70dfcdaab4cf033f9a4003a341e1" 
-#define YOUR_USER_NAME @"derekw310"
+#define CLIENT_ID @"client_id=65db70dfcdaab4cf033f9a4003a341e1"
+#define USER_NAME @"derekw310"
+#define SC_API @"https://api.soundcloud.com"
+
 
 #import "ALASoundCloudRequest.h"
-#import "ALASong.h"
-#import "ALAPlaylist.h"
-#import "ALAArtist.h"
+#import "ALASongData.h"
+
 
 @implementation ALASoundCloudRequest
 
-
-+(NSDictionary *) getSoundCloudData
++ (void)updateData
 {
-    NSString * soundCloudString = [NSString stringWithFormat:@"https://api.soundcloud.com/users/%@/playlists.json?client_id=%@",YOUR_USER_NAME, CLIENT_ID];
+    NSString * urlString = [NSString stringWithFormat:@"%@/users/%@/playlists.json?%@",SC_API,USER_NAME,CLIENT_ID];
+    NSLog(@"Connecting to %@", urlString);
+    NSURL * requestURL = [NSURL URLWithString:urlString];
     
-    NSLog(@"connecting to %@", soundCloudString);
+    NSURLRequest * request = [NSURLRequest requestWithURL:requestURL];
     
-    NSURL * soundCloudURL = [NSURL URLWithString:soundCloudString];
-    NSURLRequest * request = [NSURLRequest requestWithURL:soundCloudURL];
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData * responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSError * jSonError = nil;
-
-    NSArray * soundCloudData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jSonError];
-
+    NSOperationQueue * queue = [[NSOperationQueue alloc]init];
     
-    for (NSDictionary * playListJSON in soundCloudData)
-    
-    {
-        ALAPlaylist * playlist = [[ALAPlaylist alloc] init];
-        ALAArtist * user = [[ALAArtist alloc]init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
-    
-        // playlist name
-        NSString * playListName = playListJSON[@"title"];
-        NSLog(@"playlist name : %@", playListName);
-        // user
-        NSDictionary * userJSON = playListJSON[@"user"];
-        NSString * userName = userJSON[@"username"];
-        NSLog(@"userName name : %@", userName);
-        //track data
-        NSArray * tracksJSON = playListJSON[@"tracks"];
+        NSArray * scInfo = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         
-        
-        for (NSDictionary * track in tracksJSON)
+        for (NSDictionary * playlistInfo in scInfo)
         {
-            NSString * currentTrack = track[@"title"];
-            NSLog(@"currentTrack name : %@", currentTrack);
-
+            ALAPlaylist * playlist = [ALAPlaylist newPlaylist];
+            playlist[@"title"] = playlistInfo[@"title"];
+            [[ALASongData mainData] addNewPlaylist:playlist];
+            
+            for (NSDictionary * trackInfo in playlistInfo[@"tracks"])
+            {
+                if(![trackInfo[@"streamable"] boolValue]) continue;
+                ALATrack * track = [ALATrack newTrack];
+                track.playlist = playlist;
+                track[@"title"] = trackInfo[@"title"];
+                track[@"url"] = trackInfo[@"stream_url"];
+                [playlist.tracks addObject:track];
+                
+                [[ALASongData mainData] addNewTrack:track];
+                
+                ALAUser * user = [ALAUser newUser];
+                NSDictionary * userInfo = trackInfo [@"user"];
+                user[@"username"] = userInfo[@"username"];
+                user[@"avatar_url"] = userInfo[@"avatar_url"];
+                track.user = user;
+                [[ALASongData mainData] addNewUser:user];
+            }
         }
-    
-    }
-    
-    
-    
-    
-    
-    
-//    
-//    NSArray * tracks = soundCloudData[@"tracks"];
-//    NSDictionary * firstTrack = tracks[0];
-////    NSString * title = firstTrack[@"title"];
-//    
-//
-//    NSLog(@"%d", (int)[tracks count]);
-//    NSLog(@"First Track data: %@", firstTrack);
-    return @{};
-    
+        
+        NSNotificationCenter * nCenter = [NSNotificationCenter defaultCenter];
+        
+        [nCenter postNotificationName:@"dataUpdated" object:nil];
+        
+        NSLog(@"all tracks %@, all users %@, all playlists %@" ,
+              [[ALASongData mainData]allTracks],
+              [[ALASongData mainData]allUsers],
+              [[ALASongData mainData]allPlaylists]);
+    }];
 }
+
 @end

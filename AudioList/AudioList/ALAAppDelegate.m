@@ -20,7 +20,7 @@
     
     UINavigationController * nc = [[UINavigationController alloc]initWithNibName:nil bundle:nil];
     
-    [ALASoundCloudRequest getSoundCloudData];
+//    [ALASoundCloudRequest getSoundCloudData];
     
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
     {

@@ -8,7 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ALATrack.h"
+#import "ALAUser.h"
+#import "ALAPlaylist.h"
+
 @interface ALASongData : NSObject
+
++(ALASongData *)mainData;
+
+-(void)addNewTrack:(ALATrack *)track;
+-(NSArray *)allTracks;
+
+-(void)addNewUser: (ALAUser *)user;
+-(NSArray *)allUsers;
+
+-(void)addNewPlaylist: (ALAPlaylist *)playlist;
+-(NSArray *)allPlaylists;
 
 
 
